@@ -1,6 +1,7 @@
 {% extends './base.html' %}
 {% block content %}
 <h2>Purchases</h2>
+<a href="{% url 'purchases_create' %}"><button class="btn">Add Purchase</button></a>
 <table>
     <tr>
         <th>Item</th>
