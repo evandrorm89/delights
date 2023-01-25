@@ -1,69 +1,21 @@
-<head>
-<style>
-body {
-    font-family: Arial, Helvetica, sans-serif;
-}
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #ddd;
-}
-
-th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
-input[type=text], input[type=password], select {
-    width: 30%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-button, input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
-</style>
-</head>
 <body>
 {% load static %}
-<a href="{% url 'home' %}"><img src="{% static 'inventory/owl.jpg' %}" alt="VO Logo"></a>
-<h3>Welcome to your Inventory {{ name }}!</h3>
-    {% block content %}
-    {% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'django_delights/header.css' %}">
+
+<div class="header">
+
+    <a href="{% url 'home' %}"><img src="{% static 'django_delights/Dessert.png' %}" alt="VO Logo"></a>
+    {% if user.username %}
+    <a href="{% url 'logout' %}" class="logout_button">Log Out</a>
+    {% endif %}
+    <div class="header-content">
+        <h1 class="header-title">Django Delights</h1>
+        {% if user.username %}
+        <h4 class="header-greet">Welcome to your Inventory, {{ name }}!</h4>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
 </body>

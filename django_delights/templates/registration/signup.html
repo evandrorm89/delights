@@ -1,0 +1,16 @@
+{% extends "../django_delights/home.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'django_delights/signup.css' %}">
+<div class="signup-form">
+   <h2>Sign up</h2>
+   <form class="signup" method="post">
+      <div>
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input type="submit" value="Signup"/>
+      </div>
+   </form>
+</div>
+{% endblock %}
